@@ -22,7 +22,7 @@ img {
    ========================== */
    
    :root {
-    /* Color */
+        /* Color */
     --color-accent: #4d1979;
     --color-accent-strong: #321052;
     --color-text: #172033;
@@ -30,7 +30,7 @@ img {
     --color-border: #d9dfeb;
     --color-bg: #f7f8fb;
     --color-surface: #ffffff;
-    /* spacing, type, radius, shadow tokens... */
+    --color-surface-alt: #f1f5f9;
 
     /* Spacing - a modular scale */
     --space-sm: 0.5rem;
@@ -48,7 +48,6 @@ img {
 
     /* Layout */
     --page-width: 64rem;
-    --reading-width: 70ch;
 
     /* existing tokens */
     --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
@@ -84,7 +83,6 @@ img {
    p:last-child { margin-bottom: 0; }
 
    a { color: var(--color-accent); }
-   ul { padding-left: var(--space-lg); }
 
    a:focus-visible {
     outline: 2px solid var(--color-accent);
@@ -92,8 +90,6 @@ img {
 }
 /* ==========================
    4. LAYOUT
-   Breakpoints used in this file:
-     768px  — tablet and larger
    (CSS variables cannot be used inside @media conditions,
     so breakpoints are documented here instead of tokenized.)
    ========================== */
@@ -105,119 +101,42 @@ img {
    }
 
    header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-lg);
       padding: var(--space-lg);
       background-color: var(--color-surface-alt);
       margin-bottom: var(--space-lg);
-      flex-wrap: wrap;
    }
-   .header-text { flex: 1; min-width: 16rem; }
-   .header-pic {
-      flex: 1;
-      background-color: var(--color-surface);
-      min-height: 18rem;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-muted);
-      min-width: 16rem;
-   }
-
-   nav {
-      padding: var(--space-md) 0;
-   }
-   nav a {
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-   nav a:hover { color: var(--color-accent); }
-
-   section, aside { margin-bottom: var(--space-xl); }
-
-   .skills-grid {
-    list-style: none;
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    gap: var(--space-md);
-}
-.skill-card {
-    padding: var(--space-md);
-    background-color: var(--color-surface-alt);
-    border-radius: var(--radius-md);
-}
-
-.about {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   gap: var(--space-lg);
-}
-.about-image { flex: 1; min-width: 16rem; }
-.about-image img { width: 100%; border-radius: var(--radius-md); }
-.about-text { flex: 2; min-width: 16rem; max-width: var(--reading-width); }
-
-   .project-list {
-    list-style: none;
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-}
-@media (min-width: 768px) {
-    .project-list { grid-template-columns: 1fr 1fr; }
-    .project-card.featured { grid-column: span 2; }
-}
-   .project-card {
-      padding: var(--space-lg);
-      background-color: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-   }
+   
+   section { margin-bottom: var(--space-xl); }
 
 /* ==========================
-   New code that works with shaping images in project boxes
+   5. HEADER 
    ========================== */
-   .project-card img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-md);
-      margin-bottom: var(--space-md);
-   }
-
-.nav-container {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   flex-wrap: wrap;
-   gap: var(--space-md);
-}
-.nav-links { display: flex; gap: var(--space-lg); }
-.logo {
-   font-size: var(--text-h3);
-   font-weight: bold;
-   color: var(--color-text);
-   text-decoration: none;
-}
-
-/* ========================== 5. Header ========================== */
-/* ========================== 6. Sections ========================== */
-/* ========================== 7. Forms ========================== */
-/* ========================== 8. Buttons ========================== */
-/* ========================== 9. Search ========================== */
-/* ========================== 10. Cards ========================== */
+   /* ==========================
+   6. SECTIONS
+   ========================== */
+   /* ==========================
+   7. FORMS
+   ========================== */
+   /* ==========================
+   8. BUTTONS
+   ========================== */
+   /* ==========================
+   9. SEARCH
+   ========================== */
+   /* ==========================
+   10. CARDS
+   ========================== */
 .favorites-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-lg);
 }
-/* ========================== 11. Footer ========================== */
-/* ========================== 12. Responsive ========================== */
+/* ==========================
+   11. FOOTER
+   ========================== */
+   /* ==========================
+   12. RESPONSIVE
+   ========================== */
 @media (min-width: 768px) {
     .favorites-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
