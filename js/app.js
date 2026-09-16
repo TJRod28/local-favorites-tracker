@@ -14,3 +14,8 @@ console.log(today); // 9/16/26
 console.log(myFavorite); // click the arrow to expand it
 console.log(typeof myFavorite.name); // string
 console.log(typeof myFavorite.rating); //number
+
+let placeName = "Joe's Pizza and Pasta";
+let rating = 5;
+console.log(placeName + " - " + rating + "/5");
+console.log("⭐".repeat(rating) + " " + placeName);
