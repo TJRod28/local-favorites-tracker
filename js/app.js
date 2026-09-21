@@ -1,3 +1,6 @@
+const form = document.getElementById("add-favorite-form");
+const favoritesList = document.getElementById("favorites-list");
+
 let myFavorite = {
     name: "Joe's Pizza and Pasta",
     category: "restaurant",
@@ -28,11 +31,28 @@ greetFavorite("Starbucks", 5); //"Starbucks has 5 stars!"
 const nameInput = document.getElementById("name");
 console.log(nameInput.value); //what the user typed
 
-const practiceForm = document.getElementById("add-favorite-form");
+function addFavorite(event) {
+    event.preventDefault();
 
-function handleSubmit(event) {
-    event.preventDefault(); //stop the page reload
-    console.log("You typed: " + nameInput.value);
+    const name = document.getElementById("name").value.trim();
+    const category = document.getElementById("category").value;
+
+    if (!name || !category) {
+        alert("Please fill in name and category!");
+        return;
+    }
+
+    const newFavorite = {
+        name: name,
+        category: category,
+        rating: parseInt(document.getElementById("rating").value),
+        notes: document.getElementById("notes").value.trim(),
+        dateAdded: new Date ().toLocaleDateString()
+    };
+
+    myFavorite.push(newFavorite)
+    form.reset();
+    displayFavorites();
 }
 
-practiceForm.addEventListener("submit", handleSubmit);
+form.addEventListener("submit", addFavorite);
