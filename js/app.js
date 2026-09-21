@@ -46,3 +46,5 @@ function displayFavorites() {
         </div>`;
         });
     }
+
+displayFavorites();
