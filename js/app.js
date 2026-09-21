@@ -1,35 +1,6 @@
 const form = document.getElementById("add-favorite-form");
 const favoritesList = document.getElementById("favorites-list");
-
-let myFavorite = {
-    name: "Joe's Pizza and Pasta",
-    category: "restaurant",
-    rating: 5,
-    notes: "Great place for custom pizza and filling bread rolls",
-    dateAdded: "September 2026"
-};
-console.log(myFavorite.name);
-let displayText = myFavorite.name + " - Rating: " + myFavorite.rating + "/5";
-
-let today = new Date().toLocaleDateString();
-console.log(today); // 9/16/26
-
-console.log(myFavorite); // click the arrow to expand it
-console.log(typeof myFavorite.name); // string
-console.log(typeof myFavorite.rating); //number
-
-let placeName = "Joe's Pizza and Pasta";
-let rating = 5;
-console.log(placeName + " - " + rating + "/5");
-console.log("⭐".repeat(rating) + " " + placeName);
-
-function greetFavorite(placeName, rating) {
-    console.log(placeName + " has " + rating + " stars! ");
-}
-greetFavorite("Starbucks", 5); //"Starbucks has 5 stars!"
-
-const nameInput = document.getElementById("name");
-console.log(nameInput.value); //what the user typed
+let favorites = [];
 
 function addFavorite(event) {
     event.preventDefault();
@@ -49,10 +20,29 @@ function addFavorite(event) {
         notes: document.getElementById("notes").value.trim(),
         dateAdded: new Date ().toLocaleDateString()
     };
-
-    myFavorite.push(newFavorite)
+    
+    favorites.push(newFavorite);
     form.reset();
     displayFavorites();
 }
 
 form.addEventListener("submit", addFavorite);
+
+function displayFavorites() {
+    favoritesList.innerHTML = "";
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = '<p class="empty-message">No favorites yet. Add your first favorite place above!</p>';
+        return;
+    }
+    favorites.forEach(function(favorite) {
+        const stars = "⭐".repeat(favorite.rating);
+        favoritesList.innerHTML += `
+        <div class="favorite-card">
+        <h3>${favorite.name}</h3>
+        <span class="favorite-category">${favorite.category}</span>
+        <div class="favorite-rating">${stars} (${favorite.rating}/5)</div>
+        <p class="favorite-notes">${favorite.notes}</p>
+        <p class="favorite-date">Added: ${favorite.dateAdded}</p>
+        </div>`;
+        });
+    }
