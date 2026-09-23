@@ -1,6 +1,8 @@
+let favorites = [];
 const form = document.getElementById("add-favorite-form");
 const favoritesList = document.getElementById("favorites-list");
-let favorites = [];
+const searchInput = document.getElementById("search-input");
+const categoryFilter = document.getElementById("category-filter");
 
 function addFavorite(event) {
     event.preventDefault();
@@ -46,5 +48,13 @@ function displayFavorites() {
         </div>`;
         });
     }
+
+function deleteFavorite(index) {
+    const favorite = favorites[index];
+    if (confirm(`Delete "${favorite.name}"?`)) {
+        favorites.splice(index, 1); //removes 1 item at the index
+        searchFavorites(); //re-render, keeping current filter
+    }
+}
 
 displayFavorites();
