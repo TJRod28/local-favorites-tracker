@@ -4,6 +4,9 @@ const favoritesList = document.getElementById("favorites-list");
 const searchInput = document.getElementById("search-input");
 const categoryFilter = document.getElementById("category-filter");
 
+searchInput.addEventListener("input", searchFavorites);
+categoryFilter.addEventListener("change", searchFavorites);
+
 function addFavorite(event) {
     event.preventDefault();
 
@@ -31,23 +34,10 @@ function addFavorite(event) {
 form.addEventListener("submit", addFavorite);
 
 function displayFavorites() {
-    favoritesList.innerHTML = "";
-    if (favorites.length === 0) {
-        favoritesList.innerHTML = '<p class="empty-message">No favorites yet. Add your first favorite place above!</p>';
-        return;
-    }
-    favorites.forEach(function(favorite) {
-        const stars = "⭐".repeat(favorite.rating);
-        favoritesList.innerHTML += `
-        <div class="favorite-card">
-        <h3>${favorite.name}</h3>
-        <span class="favorite-category">${favorite.category}</span>
-        <div class="favorite-rating">${stars} (${favorite.rating}/5)</div>
-        <p class="favorite-notes">${favorite.notes}</p>
-        <p class="favorite-date">Added: ${favorite.dateAdded}</p>
-        </div>`;
-        });
-    }
+    searchInput.value = ""; //clear the search box
+    categoryFilter.value = "all"; //back to All categories
+    searchFavorites();
+}
 
 function deleteFavorite(index) {
     const favorite = favorites[index];
@@ -71,6 +61,17 @@ function searchFavorites() {
     });
 
     favoritesList.innerHTML = "";
+
+    //IMPORTANT INFO: Lab Guide and Claude solution!! Lab Guide kept telling me to add something here before submitting and I could not understand exactly what it was telling me. So, I had Claude break it down for me and he offered an example to help me fix the wording that the Lab Guide was confusing me on. This is the only time Claude has helped in the JavaScript Process
+    if (filtered.length === 0) {
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = `<p class="empty-message">No favorites yet. Add your first favorite place above.</p>`;
+    } else {
+        favoritesList.innerHTML = `<p class="empty-message">No favorites match your search or filter.</p>`;
+    }
+    return;
+}
+//End of Important Info Lab Guide and Claude solution
     
     filtered.forEach(function(favorite) {
         const index = favorites.indexOf(favorite);
