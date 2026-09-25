@@ -1,4 +1,5 @@
 let favorites = [];
+
 const form = document.getElementById("add-favorite-form");
 const favoritesList = document.getElementById("favorites-list");
 const searchInput = document.getElementById("search-input");
@@ -27,11 +28,32 @@ function addFavorite(event) {
     };
     
     favorites.push(newFavorite);
+    saveFavorites();
     form.reset();
     displayFavorites();
 }
 
 form.addEventListener("submit", addFavorite);
+
+function saveFavorites() {
+    try {
+        localStorage.setItem('localFavorites', JSON.stringify(favorites));
+    } catch (error) {
+        alert('Unable to save favorites. Storage may be disabled.');
+    }
+}
+function loadFavorites() {
+    try {
+        const saved = localStorage.getItem('localFavorites');
+        if (saved) {
+            favorites = JSON.parse(saved);
+        } else {
+            favorites = [];
+        }
+    } catch (error) {
+        favorites = [];
+    }
+}
 
 function displayFavorites() {
     searchInput.value = ""; //clear the search box
@@ -43,6 +65,7 @@ function deleteFavorite(index) {
     const favorite = favorites[index];
     if (confirm(`Delete "${favorite.name}"?`)) {
         favorites.splice(index, 1); //removes 1 item at the index
+        saveFavorites();
         searchFavorites(); //re-render, keeping current filter
     }
 }
@@ -87,4 +110,5 @@ function searchFavorites() {
         </div>`;
         });
     }
+loadFavorites();
 displayFavorites();
