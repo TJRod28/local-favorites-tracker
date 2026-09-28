@@ -85,9 +85,12 @@ function searchFavorites() {
 
     favoritesList.innerHTML = "";
     // Adding this line of code here in the searchFavorites category since it calls back to the search in my favorites.List Additional code from Optional Enhancements for Project 2. This creates a favorites count display.
-    // Had to use Claude to help me understand the favorites.length===1 variable and the extra "s" at the end because it would constantly break.
-    document.getElementById("favorites-count").textContent =
-    `You have ${favorites.length} favorite${favorites.length === 1 ? "" : "s"}`;
+    // FIRST EDIT: Had to use Claude to help me understand the favorites.length===1 variable and the extra "s" at the end because it would constantly break.
+    // SECOND EDIT: Had to modify again with help from Claude because the favorite count would freeze on filtering saying there were 4 favorites instead of 2 showing up on a filter. I originally did not know how to fix this until this suggestion.
+    const isFiltered = searchText !== "" || selectedCategory !== "all";
+    document.querySelector(".favorites-count").textContent = isFiltered
+    ? `Showing ${filtered.length} of ${favorites.length} favorite${favorites.length === 1 ? "" : "s"}`
+    : `You have ${favorites.length} favorite${favorites.length === 1 ? "" : "s"}`;
 
     //IMPORTANT INFO: Lab Guide and Claude solution!! Lab Guide kept telling me to add something here before submitting and I could not understand exactly what it was telling me. So, I had Claude break it down for me and he offered an example to help me fix the wording that the Lab Guide was confusing me on. This is the only time Claude has helped in the JavaScript Process
     if (filtered.length === 0) {
