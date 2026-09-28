@@ -88,7 +88,7 @@ function searchFavorites() {
     //IMPORTANT INFO: Lab Guide and Claude solution!! Lab Guide kept telling me to add something here before submitting and I could not understand exactly what it was telling me. So, I had Claude break it down for me and he offered an example to help me fix the wording that the Lab Guide was confusing me on. This is the only time Claude has helped in the JavaScript Process
     if (filtered.length === 0) {
     if (favorites.length === 0) {
-        favoritesList.innerHTML = `<p class="empty-message">No favorites yet. Add your first favorite place above.</p>`;
+        favoritesList.innerHTML = `<p class="empty-message">No favorites yet. Add your first favorite above.</p>`;
     } else {
         favoritesList.innerHTML = `<p class="empty-message">No favorites match your search or filter.</p>`;
     }
