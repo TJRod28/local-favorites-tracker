@@ -165,6 +165,14 @@ button {
    /* ==========================
    9. SEARCH
    ========================== */
+   /* Adding this line of code here in the Search category since it calls back to the search in my favorites.List */
+   /* Additional code from Optional Enhancements for Project 2. This creates a favorites count display. */
+   .favorites-count {
+    color: var(--color-text);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+}
 
    /* ==========================
    10. CARDS
