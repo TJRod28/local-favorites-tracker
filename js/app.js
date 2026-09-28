@@ -109,7 +109,7 @@ function searchFavorites() {
         favoritesList.innerHTML += `
         <div class="favorite-card">
         <h3>${favorite.name}</h3>
-        <span class="favorite-category">${favorite.category}</span>
+        <span class="favorite-category category-${favorite.category}">${favorite.category}</span>
         <div class="favorite-rating">${stars} (${favorite.rating}/5)</div>
         <p class="favorite-notes">${favorite.notes}</p>
         <p class="favorite-date">Added: ${favorite.dateAdded}</p>
@@ -117,5 +117,13 @@ function searchFavorites() {
         </div>`;
         });
     }
+    
+    function clearAll() {
+    if (confirm("Delete ALL favorites? This action cannot be undone.")) {
+        favorites = [];
+        saveFavorites();
+        displayFavorites();
+    }
+}
 loadFavorites();
 displayFavorites();

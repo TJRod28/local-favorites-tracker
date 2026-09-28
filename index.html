@@ -10,7 +10,7 @@
   
 <header>
     <h1>Local Favorites Tracker</h1>
-    <p>This is a very rudimentary work in progress website application that is supposed to be designed to save places that to me are deemed worthy of returning to whenever I have free time to explore.</p>
+    <p>This is a tracker built from the ground up using HTML, CSS, and JavaScript. Use this local tracker to keep track on all the places you love to visit in your area! You can always come back and edit later by adding more favorites or deleting some you hardly visit anymore. All the information will be stored in your local storage drive!</p>
 </header>
 
 <main>
@@ -81,6 +81,11 @@
     <!-- Additional code from Optional Enhancements for Project 2. This creates a favorites count display. -->
     <p id="favorites-count"
     class="favorites-count"></p>
+   <p class="favorites-count"></p>
+   <!-- Apparently, to get the clear all button working the Lab guide was having some difficulty with what I wanted to do and when reaching out for help from Claude, it suggested placing this block of code in HTML. It makes sense considering the clear all button will always remain on the page for mistakes, but it did feel weird after working in JavaScript for most of the project. -->
+   <div class="clear-all-container">
+    <button class="btn-danger" onclick="clearAll()">Clear All Favorites</button>
+   </div>
 
     <section class="favorites-section">
         <div id="favorites-list" class="favorites-grid">

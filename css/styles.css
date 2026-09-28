@@ -33,6 +33,16 @@ img {
     --color-surface-alt: #f1f5f9;
     --color-danger: #931710;
 
+    /* Colors for categories */
+    --color-coffee: #6f4e37;
+    --color-entertainment: #4d1979;
+    --color-restaurant: #931710;
+    --color-shops: #035886;
+    --color-recreation: #0E5D2B;
+    --color-pizza: #8D2D07;
+    --color-tacos: #2A510B;
+    --color-sandwiches: #5D500E;
+
     /* Spacing - a modular scale */
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -162,6 +172,10 @@ button {
     color: var(--color-surface);
 }
 
+.clear-all-container {
+    margin-bottom: var(--space-xl);
+}
+
    /* ==========================
    9. SEARCH
    ========================== */
@@ -193,7 +207,32 @@ button {
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
+      /* Additions for Project 2 Optional Enhancements for hovering cards */
+      transition: box-shadow 0.2s; 
    }
+
+   .favorite-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Additions for Project 2 Optional Enhancements for adding category icons for quick visual scanning */
+.favorite-category {
+    display: inline-block;
+    padding: 2px var(--space-sm);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: var(--color-accent);
+    color: var(--color-surface);
+}
+.category-coffee { background-color: var(--color-coffee); }
+.category-entertainment { background-color: var(--color-entertainment); }
+.category-restaurant { background-color: var(--color-restaurant); }
+.category-shops { background-color: var(--color-shops); }
+.category-recreation { background-color: var(--color-recreation); }
+.category-pizza { background-color: var(--color-pizza); }
+.category-tacos { background-color: var(--color-tacos); }
+.category-sandwiches { background-color: var(--color-sandwiches); }
 
 /* ==========================
    11. FOOTER
